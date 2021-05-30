@@ -1,4 +1,5 @@
 const Tour = require('./../Models/tourModel');
+const Booking = require('./../Models/bookingModel');
 const catchAsync = require('./../util/catchAsync');
 const AppError = require('./../util/appError');
 const User = require('./../Models/userModel');
@@ -34,7 +35,7 @@ exports.getTour = catchAsync(async (req, res, next)=> {
          
      res
     .status(200)
-    .set(
+    .setHeader(
       'Content-Security-Policy',
       "default-src 'self' https://*.mapbox.com https://*.stripe.com ; connect-src 'self' https://*.mapbox.com https://*.stripe.com ws://127.0.0.1:*/ ; base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self' https://cdnjs.cloudflare.com https://api.mapbox.com https://js.stripe.com 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
@@ -73,3 +74,27 @@ exports.updateUserData = async(req, res, next) => {
         user: updatedUser
     })
 }
+
+exports.getBookings = catchAsync(async (req, res, next) => {
+    //1. get all bookings.
+    console.log(req.user.id);
+    const booking = await Booking.find({user: req.user.id});
+   
+    //2. get all the tours booked for particular bookings.
+     const tourIds = booking.map( el => el.tour );
+      console.log(tourIds);
+    const tours = await Tour.find({_id: {$in: tourIds}});
+     console.log(tours);
+
+    res.status(200).render('overview', {
+        title: 'My Tours',
+        tours,
+    })
+
+    
+
+    
+
+
+    //2. find tours corresponding to the user
+});

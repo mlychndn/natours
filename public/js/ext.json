@@ -1,3 +1,0 @@
-   {
-    "content_security_policy": "script-src 'self' 'unsafe-eval' https://maps.googleapis.com 'unsafe-inline'; object-src 'self'"
-  }
