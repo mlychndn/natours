@@ -42,7 +42,7 @@ const multerStorage = multer.memoryStorage();
 
   exports.resizeTourImage = async (req, res, next) => {
       if(!req.files.imageCover || !req.files.images) return next();
-      console.log(req.files);
+    //   console.log(req.files);
 
       // 1.) process with imageCover.
       const imageCoverFilename = `user-${req.params.id}-${Date.now()}-cover.jpeg`;

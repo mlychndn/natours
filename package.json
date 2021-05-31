@@ -7,7 +7,7 @@
     "start": "SET NODE_ENV=developement && nodemon server.js",
     "start:prod": "SET NODE_ENV=production && nodemon server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url /js",
-    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Malay Chandan",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "@stripe/stripe-js": "^1.15.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

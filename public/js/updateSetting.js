@@ -16,7 +16,7 @@ export const updateSettings = async (data, type) => {
  if(res.data.status === 'success'){
     showAlert('success', `${type.toUpperCase()}  uploaded sucessfully!`);
  }
- console.log(res.data);
+ //console.log(res.data);
 
     } catch (error) {
         showAlert('error', error.response.data.message);

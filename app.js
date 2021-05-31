@@ -9,6 +9,7 @@ const hpp = require('hpp');
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const compression =require('compression');
 
 const tourRouter = require('./routes/tourRoute');
 const userRouter = require('./routes/userRoute'); 
@@ -90,7 +91,7 @@ app.use((req,res,next)=>{
     next();
 });
 
-
+app.use(compression());
 
 
 
