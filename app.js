@@ -91,7 +91,7 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use(compression());
+app.use(compression()); // to compress the file and code
 
 
 
